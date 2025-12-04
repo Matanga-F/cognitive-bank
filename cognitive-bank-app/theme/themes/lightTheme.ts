@@ -1,4 +1,4 @@
-import { Dimensions } from 'react-native';
+import { Dimensions, Platform} from 'react-native';
 const { width, height } = Dimensions.get('window');
 
 export const lightTheme = {
@@ -26,6 +26,12 @@ export const lightTheme = {
     header: 'rgba(147, 51, 234, 0.95)',
     gradientStart: 'rgba(250, 250, 255, 1)',
     gradientEnd: 'rgba(233, 213, 255, 0.8)',
+  },
+  contentWrapper: {
+    alignItems: "center",
+    width: "100%",
+    height: "100vh",
+    paddingHorizontal: 20,
   },
 
   // Text Colors
@@ -109,5 +115,64 @@ export const lightTheme = {
       medium: 'rgba(0, 0, 0, 0.1)',
       heavy: 'rgba(0, 0, 0, 0.15)',
     },
+  },
+
+  logoCircle: {
+    width: 120,
+    height: 120,
+    borderRadius: 60,
+    justifyContent: "center",
+    alignItems: "center",
+
+    ...(Platform.OS === "web"
+      ? { boxShadow: "0px 8px 18px rgba(221, 208, 208, 0.25)" }
+      : {
+          shadowColor: "#000",
+          shadowOpacity: 0.3,
+          shadowRadius: 10,
+          elevation: 8,
+        }),
+  },
+
+  logoText: {
+    fontSize: 44,
+    fontWeight: "900",
+    color: "#fff",
+    letterSpacing: 1,
+  },
+
+  title: {
+    marginTop: 28,
+    fontSize: 30,
+    fontWeight: "800",
+    letterSpacing: 0.5,
+  },
+
+  subtitle: {
+    marginTop: 10,
+    fontSize: 15,
+    opacity: 0.85,
+    textAlign: "center",
+    maxWidth: 260,
+    lineHeight: 20,
+  },
+
+  footer: {
+    position: "absolute",
+    bottom: 26,
+    width: "100%",
+    alignItems: "center",
+  },
+
+  footerText: {
+    fontSize: 12,
+    opacity: 0.75,
+    letterSpacing: 0.3,
+  },
+
+  version: {
+    fontSize: 11,
+    marginTop: 4,
+    opacity: 0.55,
   },
 };

@@ -1,85 +1,138 @@
 import React, { useEffect, useRef } from "react";
-import { View, Text, StyleSheet, Animated, Dimensions } from "react-native";
-import { useTheme } from "../../theme/ThemeProvider";
-import { LinearGradient } from "expo-linear-gradient";
+import {
+  View,
+  Text,
+  StyleSheet,
+  Animated,
+  Platform,
+} from "react-native";
+import { useTheme } from "../../theme/ThemeProvider"
+import { SafeAreaView } from "react-native-safe-area-context";
 
-const { width, height } = Dimensions.get("window");
-
-const Welcome = ({ navigation }) => {
+export default function WelcomeScreen({ navigation }) {
   const { theme } = useTheme();
 
-  const fadeAnim = useRef(new Animated.Value(0)).current;
-  const scaleAnim = useRef(new Animated.Value(0.85)).current;
+  // Animations
+  const fade = useRef(new Animated.Value(0)).current;
+  const scale = useRef(new Animated.Value(0.8)).current;
 
   useEffect(() => {
-    // Fade + scale animation
+    // Smooth fade + scale
     Animated.parallel([
-      Animated.timing(fadeAnim, {
+      Animated.timing(fade, {
         toValue: 1,
-        duration: 1200,
-        useNativeDriver: true,
+        duration: 800,
+        useNativeDriver: Platform.OS !== "web",
       }),
-      Animated.spring(scaleAnim, {
+      Animated.spring(scale, {
         toValue: 1,
-        friction: 4,
-        tension: 60,
-        useNativeDriver: true,
+        useNativeDriver: Platform.OS !== "web",
       }),
     ]).start();
 
-    // Navigate after 5 sec
-    const timer = setTimeout(() => {
-      navigation.replace("LoginRegister");
-    }, 5000);
-
+    // Auto navigate
+    const timer = setTimeout(() => navigation.replace("Login"), 2500);
     return () => clearTimeout(timer);
   }, []);
 
   return (
-    <LinearGradient
-      colors={[theme.background.gradientStart, theme.background.gradientEnd]}
-      style={styles.container}
-    >
+    <SafeAreaView style={[styles.container, { backgroundColor: theme.brand.primary }]}>
       <Animated.View
         style={[
-          styles.innerContainer,
+          styles.center,
           {
-            opacity: fadeAnim,
-            transform: [{ scale: scaleAnim }],
+            opacity: fade,
+            transform: [{ scale }],
           },
         ]}
       >
+        {/* LOGO */}
+        <View style={[styles.logoCircle, { backgroundColor: theme.brand.secondary }]}>
+          <Text style={styles.logoText}>CB</Text>
+        </View>
+
+        {/* TITLE */}
+        <Text style={[styles.title, { color: theme.text.primary }]}>
+          Cognitive Bank
+        </Text>
+
+        {/* SUBTITLE */}
+        <Text style={[styles.subtitle, { color: theme.text.secondary }]}>
+          Intelligent Banking • Secure Future
+        </Text>
         
       </Animated.View>
-    </LinearGradient>
-  );
-};
 
-export default Welcome;
+      {/* FOOTER */}
+      <View style={styles.footer}>
+        <Text style={[styles.footerText, { color: theme.text.secondary }]}>
+          Powered by AI
+        </Text>
+        <Text style={[styles.version, { color: theme.text.secondary }]}>
+          v1.0.0
+        </Text>
+      </View>
+    </SafeAreaView>
+  );
+}
 
 const styles = StyleSheet.create({
   container: {
     flex: 1,
-    width: width,
-    height: height,
+    justifyContent: "center",
+  },
+  center: {
+    alignItems: "center",
+    paddingHorizontal: 20,
+  },
+  logoCircle: {
+    width: 110,
+    height: 110,
+    borderRadius: 55,
     justifyContent: "center",
     alignItems: "center",
+
+    // Web shadow fix
+    ...(Platform.OS === "web"
+      ? { boxShadow: "0px 4px 12px rgba(0,0,0,0.25)" }
+      : {
+          shadowColor: "#000",
+          shadowOpacity: 0.25,
+          shadowRadius: 8,
+          elevation: 6,
+        }),
   },
-  title: {
-    fontSize: 36,
+  logoText: {
+    fontSize: 42,
     fontWeight: "800",
+    color: "#fff",
     letterSpacing: 1,
   },
-  subtitle: {
-    marginTop: 12,
-    fontSize: 18,
-    fontWeight: "500",
+  title: {
+    marginTop: 24,
+    fontSize: 28,
+    fontWeight: "800",
   },
-  pulse: {
-    marginTop: 40,
-    width: 90,
-    height: 90,
-    borderRadius: 90,
+  subtitle: {
+    marginTop: 8,
+    fontSize: 14,
+    opacity: 0.8,
+    textAlign: "center",
+    maxWidth: 280,
+  },
+  footer: {
+    position: "absolute",
+    bottom: 30,
+    width: "100%",
+    alignItems: "center",
+  },
+  footerText: {
+    fontSize: 12,
     opacity: 0.7,
+  },
+  version: {
+    fontSize: 10,
+    marginTop: 4,
+    opacity: 0.5,
   },
 });
