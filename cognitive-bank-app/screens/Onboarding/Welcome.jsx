@@ -8,6 +8,7 @@ import {
 } from "react-native";
 import { useTheme } from "../../theme/ThemeProvider"
 import { SafeAreaView } from "react-native-safe-area-context";
+import CognitiveFooter from "../../components/Card/CognitiveFooter";
 
 export default function WelcomeScreen({ navigation }) {
   const { theme } = useTheme();
@@ -60,26 +61,27 @@ export default function WelcomeScreen({ navigation }) {
         <Text style={[styles.subtitle, { color: theme.text.secondary }]}>
           Intelligent Banking • Secure Future
         </Text>
+
+        {/* FOOTER */}
+      <View>
+         <CognitiveFooter support={"Cognitive"} organization={"Intellince"}/>
+
+      </View>
         
       </Animated.View>
 
-      {/* FOOTER */}
-      <View style={styles.footer}>
-        <Text style={[styles.footerText, { color: theme.text.secondary }]}>
-          Powered by AI
-        </Text>
-        <Text style={[styles.version, { color: theme.text.secondary }]}>
-          v1.0.0
-        </Text>
-      </View>
+      
+
     </SafeAreaView>
   );
 }
 
 const styles = StyleSheet.create({
   container: {
-    flex: 1,
+    width: "100%",
+    height: "100vh",
     justifyContent: "center",
+    alignContent: "center",
   },
   center: {
     alignItems: "center",

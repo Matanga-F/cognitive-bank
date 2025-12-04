@@ -11,7 +11,7 @@ import {
   Alert
 } from 'react-native';
 import { useTheme } from "../../theme/ThemeProvider";
-import CognitiveInput from "../common/CognitiveInput"
+import CognitiveInput from "../dashboard/CognitiveInput"
 
 const CognitiveAuthentication = ({ 
   onLoginSuccess,
@@ -394,9 +394,6 @@ const CognitiveAuthentication = ({
 export default CognitiveAuthentication;
 
 const styles = StyleSheet.create({
-  container: {
-    flex: 1,
-  },
   scrollContainer: {
     flexGrow: 1,
     paddingHorizontal: 24,

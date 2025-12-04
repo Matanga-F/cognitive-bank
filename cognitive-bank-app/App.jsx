@@ -13,6 +13,8 @@ import { useTheme, ThemeProvider } from "./theme/ThemeProvider";
 import { SafeAreaProvider, SafeAreaView } from "react-native-safe-area-context";
 import Landing from "./components/modals/web/Landing"
 import CognitiveAuthentication from "./components/forms/CognitiveAuthentication"
+import AppNavigator from "./navigation/AppNavigator"
+import CognitiveFooter from './components/Card/CognitiveFooter';
 const MainApp = () => {
   const { theme, mode, toggleTheme } = useTheme();
 
@@ -38,7 +40,9 @@ const MainApp = () => {
           ]}
         >
           {Platform.OS === "web" ? (
-              <CognitiveAuthentication />
+            <View>
+              <AppNavigator />
+              </View>
                 ) : (
                   <Text style={theme.text.secondary}>Running on Mobile</Text>
                 )}
