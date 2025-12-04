@@ -1,23 +1,19 @@
 import { StatusBar } from 'expo-status-bar';
 import { StyleSheet, Text, View, Button, Animated } from 'react-native';
 import { useTheme, ThemeProvider} from "./theme/ThemeProvider"
-import { SafeAreaView } from "react-native-safe-area-context";
+import { SafeAreaProvider, SafeAreaView } from "react-native-safe-area-context";
+import AppNavigator from './navigation/AppNavigator';
 const MainApp = () => {
   const { theme, toggleTheme, mode } = useTheme();
 
   return (
-    <SafeAreaView style={{ flex: 1 }}>
-      <Animated.View style={[styles.container, { backgroundColor: theme.background.primary }]}>
+    <SafeAreaProvider style={{ flex: 1 }}>
+      <Animated.View style={[styles.container, { backgroundColor: theme.brand.secondary}]}>
         <View style={styles.innerContainer}>
-
-          {/* Toggle Theme Button */}
-          <Button
-            title={mode === 'dark' ? 'Switch to Light Mode' : 'Switch to Dark Mode'}
-            onPress={toggleTheme}
-          />
+          <AppNavigator />
         </View>
       </Animated.View>
-    </SafeAreaView>
+    </SafeAreaProvider>
   );
 };
 
@@ -33,7 +29,5 @@ const styles = StyleSheet.create({
   container: {
     flex: 1,
     backgroundColor: '#fff',
-    alignItems: 'center',
-    justifyContent: 'center',
   },
 });

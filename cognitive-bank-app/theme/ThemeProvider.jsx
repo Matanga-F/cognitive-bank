@@ -1,22 +1,86 @@
-import React, { createContext, useContext, useMemo, useState } from "react";
-import { darkTheme} from "../contant/DarkTheme";
-import { lightTheme } from "../contant/LightTheme";
+import React, { createContext, useContext, useMemo, useState, useEffect } from "react";
+import { useColorScheme } from "react-native";
+import AsyncStorage from "@react-native-async-storage/async-storage";
 
+import { darkTheme, lightTheme, COGNITIVE_CONSTANTS } from "./themes";
+
+// Create Context
 const ThemeContext = createContext(null);
 
-export const ThemeProvider = ({ children }) => {
-  const [mode, setMode] = useState("dark"); // "light" | "dark"
+// Storage Key
+const THEME_STORAGE_KEY = "@CognitiveBank:themeMode";
 
+export const ThemeProvider = ({ children }) => {
+  const systemColorScheme = useColorScheme();
+  const [mode, setModeState] = useState("system");
+  const [isReady, setIsReady] = useState(false);
+
+  // Load saved theme preference on startup
+  useEffect(() => {
+    (async () => {
+      try {
+        const savedTheme = await AsyncStorage.getItem(THEME_STORAGE_KEY);
+        if (savedTheme === "light" || savedTheme === "dark" || savedTheme === "system") {
+          setModeState(savedTheme);
+        } else {
+          setModeState("system");
+        }
+      } catch (error) {
+        console.warn("Failed to load theme preference:", error);
+        setModeState("system");
+      } finally {
+        setIsReady(true);
+      }
+    })();
+  }, []);
+
+  // Current theme object
   const theme = useMemo(() => {
+    if (mode === "system") {
+      return systemColorScheme === "dark" ? darkTheme : lightTheme;
+    }
     return mode === "dark" ? darkTheme : lightTheme;
-  }, [mode]);
+  }, [mode, systemColorScheme]);
+
+  const isDark = useMemo(() => {
+    if (mode === "system") {
+      return systemColorScheme === "dark";
+    }
+    return mode === "dark";
+  }, [mode, systemColorScheme]);
+
+  const isSystem = mode === "system";
+
+  const setMode = async (newMode) => {
+    setModeState(newMode);
+    try {
+      await AsyncStorage.setItem(THEME_STORAGE_KEY, newMode);
+    } catch (error) {
+      console.warn("Failed to save theme preference:", error);
+    }
+  };
 
   const toggleTheme = () => {
-    setMode((prev) => (prev === "dark" ? "light" : "dark"));
+    const newMode = isDark ? "light" : "dark";
+    setMode(newMode);
+  };
+
+  if (!isReady) {
+    return null; // Could show a splash screen here
+  }
+
+  const contextValue = {
+    mode,
+    theme,
+    constants: COGNITIVE_CONSTANTS,
+    toggleTheme,
+    setMode,
+    isDark,
+    isSystem,
   };
 
   return (
-    <ThemeContext.Provider value={{ mode, setMode, toggleTheme, theme }}>
+    <ThemeContext.Provider value={contextValue}>
       {children}
     </ThemeContext.Provider>
   );

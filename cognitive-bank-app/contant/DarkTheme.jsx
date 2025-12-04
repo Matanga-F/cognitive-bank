@@ -26,6 +26,32 @@ export const darkTheme = {
     gradientStart: 'rgba(17, 24, 39, 1)',
     gradientEnd: 'rgba(88, 28, 135, 0.8)',
   },
+  container: {
+    flex: 1,
+    width: width,
+    height: height,
+    justifyContent: "center",
+    alignItems: "center",
+    primary: 'rgba(17, 24, 39, 1)',           // Main container (matches background.primary)
+    secondary: 'rgba(31, 41, 55, 1)',         // Secondary container (matches background.secondary)
+    tertiary: 'rgba(55, 65, 81, 1)',          // Tertiary container (matches background.tertiary)
+    elevated: 'rgba(88, 28, 135, 0.25)',      // Elevated container (matches background.card)
+    glass: 'rgba(31, 41, 55, 0.8)',           // Glass morphism effect
+  },
+
+innerContainer: {
+  primary: 'rgba(31, 41, 55, 1)',           // One level deeper
+  secondary: 'rgba(55, 65, 81, 1)',         // Two levels deeper
+  accent: 'rgba(88, 28, 135, 0.3)',         // Accent inner container
+  bordered: 'rgba(31, 41, 55, 0.9)',        // With border emphasis
+},
+
+innermostContainer: {
+  primary: 'rgba(55, 65, 81, 1)',           // Deepest level
+  secondary: 'rgba(75, 85, 99, 1)',         // Alternative deepest
+  highlight: 'rgba(88, 28, 135, 0.35)',     // Highlighted innermost
+  subtle: 'rgba(31, 41, 55, 0.7)',          // Subtle innermost
+},
 
   // Text Colors - Optimal Readability
   text: {

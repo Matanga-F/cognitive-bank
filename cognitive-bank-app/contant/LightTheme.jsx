@@ -67,4 +67,26 @@ export const lightTheme = {
     accent: ['#F3E8FF', '#FBCFE8', '#FCE7F3'],
     neural: ['#E9D5FF', '#DDD6FE', '#DBEAFE'],
   },
+  container: {
+  primary: 'rgba(250, 250, 255, 1)',        // Main container (matches background.primary)
+  secondary: 'rgba(255, 255, 255, 1)',      // Secondary container (matches background.secondary)
+  tertiary: 'rgba(249, 250, 251, 1)',       // Tertiary container (matches background.tertiary)
+  elevated: 'rgba(255, 255, 255, 0.95)',    // Elevated container (matches background.card)
+  glass: 'rgba(255, 255, 255, 0.85)',       // Glass morphism effect
+},
+
+innerContainer: {
+  primary: 'rgba(255, 255, 255, 1)',        // One level deeper
+  secondary: 'rgba(249, 250, 251, 1)',      // Two levels deeper
+  accent: 'rgba(249, 240, 255, 1)',         // Accent inner container (light purple tint)
+  bordered: 'rgba(255, 255, 255, 0.95)',    // With border emphasis
+},
+
+innermostContainer: {
+  primary: 'rgba(249, 250, 251, 1)',        // Deepest level
+  secondary: 'rgba(243, 244, 246, 1)',      // Alternative deepest
+  highlight: 'rgba(243, 232, 255, 1)',      // Highlighted innermost (light purple)
+  subtle: 'rgba(255, 255, 255, 0.8)',       // Subtle innermost
+},
+
 };
