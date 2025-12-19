@@ -1,92 +1,82 @@
-import { Platform, Dimensions } from 'react-native';
-const { width } = Dimensions.get('window');
-
+import { Dimensions, Platform } from "react-native";
+const { width, height } = Dimensions.get("window");
 
 export const lightTheme = {
-  // Background CTolors
+
+  brand: {
+    primary: "rgba(249, 115, 22, 1)",
+    secondary: "rgba(234, 88, 12, 1)",
+    tertiary: "rgba(251, 146, 60, 1)",
+    neural: "rgba(249, 115, 22, 1)",
+    accent: "rgba(2, 6, 23, 1)",
+  },
+
   background: {
-    primary: 'rgba(250, 245, 255, 1)',     // Very light purple
-    secondary: 'rgba(255, 255, 255, 1)',   // Pure white
-    tertiary: 'rgba(243, 244, 246, 1)',    // Light gray
-    card: 'rgba(255, 255, 255, 0.9)',      // Semi-transparent white
-    overlay: 'rgba(255, 255, 255, 0.8)',   // Light overlay
-    gradient1: 'rgba(233, 213, 255, 0.6)', // Light purple
-    gradient2: 'rgba(251, 207, 232, 0.4)', // Light pink
-    gradient3: 'rgba(219, 234, 254, 0.3)', // Light blue
+    primary: "rgba(255, 247, 237, 1)",
+    secondary: "rgba(255, 255, 255, 1)",
+    tertiary: "rgba(254, 215, 170, 0.25)",
+    card: "rgba(255, 255, 255, 0.95)",
+    cardElevated: "rgba(255, 255, 255, 1)",
+    overlay: "rgba(2, 6, 23, 0.4)",
+    modal: "rgba(255, 255, 255, 0.98)",
+    sidebar: "rgba(255, 247, 237, 1)",
+    header: "rgba(249, 115, 22, 0.95)",
+    gradientStart: "rgba(255, 247, 237, 1)",
+    gradientEnd: "rgba(254, 215, 170, 0.85)",
   },
 
-  // Text Colors
+  contentWrapper: {
+    alignItems: "center",
+    width: "100%",
+    height: "100vh",
+    paddingHorizontal: 20,
+  },
+
   text: {
-    primary: 'rgba(17, 24, 39, 0.95)',     // Near black
-    secondary: 'rgba(55, 65, 81, 0.8)',    // Dark gray
-    tertiary: 'rgba(107, 114, 128, 0.6)',  // Medium gray
-    accent: 'rgba(147, 51, 234, 1)',       // Purple accent
-    disabled: 'rgba(156, 163, 175, 0.5)',  // Disabled gray
+    primary: "rgba(2, 6, 23, 0.95)",
+    secondary: "rgba(30, 41, 59, 0.85)",
+    tertiary: "rgba(71, 85, 105, 0.7)",
+    accent: "rgba(249, 115, 22, 1)",
+    inverse: "rgba(255, 255, 255, 0.95)",
+    placeholder: "rgba(148, 163, 184, 0.6)",
+    disabled: "rgba(148, 163, 184, 0.5)",
+    heading: "rgba(2, 6, 23, 0.98)",
+    subheading: "rgba(30, 41, 59, 0.9)",
   },
 
-  // UI Elements
-  ui: {
-    border: 'rgba(147, 51, 234, 0.2)',     // Light purple border
-    divider: 'rgba(147, 51, 234, 0.1)',    // Very subtle divider
-    shadow: 'rgba(147, 51, 234, 0.15)',    // Light purple shadow
-    input: 'rgba(255, 255, 255, 1)',       // White input
-    inputBorder: 'rgba(209, 213, 219, 0.6)', // Gray input border
-  },
-
-  // Interactive Elements
   interactive: {
-    primary: 'rgba(147, 51, 234, 1)',      // Purple button
-    primaryHover: 'rgba(126, 34, 206, 1)', // Darker purple hover
-    secondary: 'rgba(236, 72, 153, 1)',    // Pink button
-    secondaryHover: 'rgba(219, 39, 119, 1)', // Darker pink hover
-    disabled: 'rgba(209, 213, 219, 0.5)',  // Disabled state
+    primary: {
+      background: "rgba(249, 115, 22, 1)",
+      text: "rgba(255, 255, 255, 0.95)",
+      hover: "rgba(234, 88, 12, 1)",
+      active: "rgba(194, 65, 12, 1)",
+    },
+    secondary: {
+      background: "rgba(2, 6, 23, 1)",
+      text: "rgba(255, 255, 255, 0.95)",
+      hover: "rgba(15, 23, 42, 1)",
+      active: "rgba(30, 41, 59, 1)",
+    },
   },
 
-  // Status Colors
   status: {
-    success: 'rgba(22, 163, 74, 1)',       // Green
-    warning: 'rgba(234, 88, 12, 1)',       // Orange
-    error: 'rgba(220, 38, 38, 1)',         // Red
-    info: 'rgba(37, 99, 235, 1)',          // Blue
+    success: "rgba(22, 163, 74, 1)",
+    warning: "rgba(249, 115, 22, 1)",
+    error: "rgba(220, 38, 38, 1)",
+    info: "rgba(37, 99, 235, 1)",
   },
 
-  // Neural/Glow Effects
-  neural: {
-    primary: 'rgba(147, 51, 234, 1)',      // Purple
-    secondary: 'rgba(168, 85, 247, 1)',    // Lighter purple
-    tertiary: 'rgba(236, 72, 153, 1)',     // Pink
-    accent: 'rgba(37, 99, 235, 1)',        // Blue
-    highlight: 'rgba(34, 197, 94, 1)',     // Green
-    glow: 'rgba(147, 51, 234, 0.4)',       // Light purple glow
+  charts: {
+    line: "rgba(249, 115, 22, 1)",
+    area: "rgba(249, 115, 22, 0.12)",
+    bar1: "rgba(249, 115, 22, 1)",
+    bar2: "rgba(234, 88, 12, 1)",
+    bar3: "rgba(194, 65, 12, 1)",
   },
 
-  // Gradients
   gradients: {
-    background: ['#FAF5FF', '#FFFFFF', '#F3F4F6'],
-    primary: ['#E9D5FF', '#DDD6FE', '#C4B5FD'],
-    accent: ['#F3E8FF', '#FBCFE8', '#FCE7F3'],
-    neural: ['#E9D5FF', '#DDD6FE', '#DBEAFE'],
+    primary: ["#FFF7ED", "#FFFFFF", "#FED7AA"],
+    accent: ["#FDBA74", "#FB923C", "#F97316"],
+    neural: ["#FED7AA", "#FDBA74", "#FB923C"],
   },
-  container: {
-  primary: 'rgba(250, 250, 255, 1)',        // Main container (matches background.primary)
-  secondary: 'rgba(255, 255, 255, 1)',      // Secondary container (matches background.secondary)
-  tertiary: 'rgba(249, 250, 251, 1)',       // Tertiary container (matches background.tertiary)
-  elevated: 'rgba(255, 255, 255, 0.95)',    // Elevated container (matches background.card)
-  glass: 'rgba(255, 255, 255, 0.85)',       // Glass morphism effect
-},
-
-innerContainer: {
-  primary: 'rgba(255, 255, 255, 1)',        // One level deeper
-  secondary: 'rgba(249, 250, 251, 1)',      // Two levels deeper
-  accent: 'rgba(249, 240, 255, 1)',         // Accent inner container (light purple tint)
-  bordered: 'rgba(255, 255, 255, 0.95)',    // With border emphasis
-},
-
-innermostContainer: {
-  primary: 'rgba(249, 250, 251, 1)',        // Deepest level
-  secondary: 'rgba(243, 244, 246, 1)',      // Alternative deepest
-  highlight: 'rgba(243, 232, 255, 1)',      // Highlighted innermost (light purple)
-  subtle: 'rgba(255, 255, 255, 0.8)',       // Subtle innermost
-},
-
 };

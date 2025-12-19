@@ -12,7 +12,7 @@ import {
 } from 'react-native';
 import { useTheme } from "../../theme/ThemeProvider";
 import Icon from 'react-native-vector-icons/MaterialCommunityIcons';
-import LinearGradient from 'expo-linear-gradient';
+import { LinearGradient } from 'expo-linear-gradient';
 import CognitiveTransaction from "../../components/banking/transactions/CognitiveTransaction";
 
 const { width } = Dimensions.get('window');
