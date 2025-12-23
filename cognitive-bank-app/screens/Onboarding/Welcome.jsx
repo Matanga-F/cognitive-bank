@@ -1,3 +1,4 @@
+// screens/Onboarding/WelcomeScreen.jsx (or wherever it's located)
 import React, { useEffect, useRef } from "react";
 import {
   View,
@@ -6,135 +7,134 @@ import {
   Animated,
   Platform,
 } from "react-native";
-import { useTheme } from "../../theme/ThemeProvider"
-import { SafeAreaView } from "react-native-safe-area-context";
+import { useTheme } from "../../theme/ThemeProvider";
+import MainContainer from "../../features/system/containers/MainContainer";
 import CognitiveFooter from "../../components/Card/CognitiveFooter";
 
 export default function WelcomeScreen({ navigation }) {
   const { theme } = useTheme();
 
-  // Animations
-  const fade = useRef(new Animated.Value(0)).current;
-  const scale = useRef(new Animated.Value(0.8)).current;
+  // Animation values
+  const fadeAnim = useRef(new Animated.Value(0)).current;
+  const scaleAnim = useRef(new Animated.Value(0.9)).current;
+  const slideUpAnim = useRef(new Animated.Value(40)).current;
 
   useEffect(() => {
-    // Smooth fade + scale
+    // Elegant entrance: fade in, gentle scale, and subtle slide up
     Animated.parallel([
-      Animated.timing(fade, {
+      Animated.timing(fadeAnim, {
         toValue: 1,
-        duration: 800,
-        useNativeDriver: Platform.OS !== "web",
+        duration: 1000,
+        useNativeDriver: true,
       }),
-      Animated.spring(scale, {
+      Animated.spring(scaleAnim, {
         toValue: 1,
-        useNativeDriver: Platform.OS !== "web",
+        friction: 10,
+        tension: 50,
+        useNativeDriver: true,
+      }),
+      Animated.timing(slideUpAnim, {
+        toValue: 0,
+        duration: 800,
+        useNativeDriver: true,
       }),
     ]).start();
 
-    // Auto navigate
-    const timer = setTimeout(() => navigation.replace("Login"), 2500);
+    // Auto-navigate to Login after 3 seconds
+    const timer = setTimeout(() => {
+      navigation.replace("CognitiveLogin");
+    }, 10000);
+
     return () => clearTimeout(timer);
-  }, []);
+  }, [navigation]);
 
   return (
-    <SafeAreaView style={[styles.container, { backgroundColor: theme.brand.primary }]}>
+    <MainContainer>
+      {/* Centered Content with Animation */}
       <Animated.View
         style={[
-          styles.center,
+          styles.contentContainer,
           {
-            opacity: fade,
-            transform: [{ scale }],
+            opacity: fadeAnim,
+            transform: [{ scale: scaleAnim }, { translateY: slideUpAnim }],
           },
         ]}
       >
-        {/* LOGO */}
-        <View style={[styles.logoCircle, { backgroundColor: theme.brand.secondary }]}>
-          <Text style={styles.logoText}>CB</Text>
+        {/* Premium Logo Circle */}
+        <View style={[styles.logoCircle, theme.ui.logoCircle || {}]}>
+          <Text style={[styles.logoText, theme.ui.logoText || {}]}>
+            CIB
+          </Text>
         </View>
 
-        {/* TITLE */}
-        <Text style={[styles.title, { color: theme.text.primary }]}>
+        {/* Title */}
+        <Text style={[styles.title, theme.ui.title || {}, { color: theme.text.heading || "#FF9933" }]}>
           Cognitive Bank
         </Text>
 
-        {/* SUBTITLE */}
-        <Text style={[styles.subtitle, { color: theme.text.secondary }]}>
+        {/* Subtitle */}
+        <Text style={[styles.subtitle, theme.ui.subtitle || {}, { color: theme.text.secondary }]}>
           Intelligent Banking • Secure Future
         </Text>
-
-        {/* FOOTER */}
-      <View>
-         <CognitiveFooter support={"Cognitive"} organization={"Intellince"}/>
-
-      </View>
-        
       </Animated.View>
 
-      
-
-    </SafeAreaView>
+      {/* Footer - Elegantly positioned at bottom */}
+      <View style={styles.footerWrapper}>
+        <CognitiveFooter 
+          support="Cognitive" 
+          organization="Intellince" 
+        />
+      </View>
+    </MainContainer>
   );
 }
 
 const styles = StyleSheet.create({
-  container: {
-    width: "100%",
-    height: "100vh",
+  contentContainer: {
+    flex: 1,
     justifyContent: "center",
-    alignContent: "center",
-  },
-  center: {
     alignItems: "center",
-    paddingHorizontal: 20,
+    paddingHorizontal: 32,
   },
   logoCircle: {
-    width: 110,
-    height: 110,
-    borderRadius: 55,
+    width: 130,
+    height: 130,
+    borderRadius: 65,
+    backgroundColor: "rgba(204, 85, 0, 0.9)", // Deep orange fallback
     justifyContent: "center",
     alignItems: "center",
-
-    // Web shadow fix
-    ...(Platform.OS === "web"
-      ? { boxShadow: "0px 4px 12px rgba(0,0,0,0.25)" }
-      : {
-          shadowColor: "#000",
-          shadowOpacity: 0.25,
-          shadowRadius: 8,
-          elevation: 6,
-        }),
+    borderWidth: 2,
+    borderColor: "rgba(255, 153, 51, 0.4)",
+    // Shadows already handled in theme.ui.logoCircle
   },
   logoText: {
-    fontSize: 42,
-    fontWeight: "800",
-    color: "#fff",
-    letterSpacing: 1,
+    fontSize: 48,
+    fontWeight: "900",
+    color: "#FFFFFF",
+    letterSpacing: 2,
   },
   title: {
-    marginTop: 24,
-    fontSize: 28,
+    marginTop: 32,
+    fontSize: 32,
     fontWeight: "800",
+    textAlign: "center",
+    letterSpacing: 0.5,
   },
   subtitle: {
-    marginTop: 8,
-    fontSize: 14,
-    opacity: 0.8,
+    marginTop: 12,
+    fontSize: 16,
+    fontWeight: "500",
     textAlign: "center",
-    maxWidth: 280,
+    maxWidth: 300,
+    opacity: 0.9,
+    letterSpacing: 0.3,
   },
-  footer: {
+  footerWrapper: {
     position: "absolute",
-    bottom: 30,
-    width: "100%",
+    bottom: 40,
+    left: 0,
+    right: 0,
     alignItems: "center",
-  },
-  footerText: {
-    fontSize: 12,
-    opacity: 0.7,
-  },
-  version: {
-    fontSize: 10,
-    marginTop: 4,
-    opacity: 0.5,
+    paddingHorizontal: 20,
   },
 });

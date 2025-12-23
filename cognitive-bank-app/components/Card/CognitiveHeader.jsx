@@ -4,40 +4,43 @@ import {
   View
 } from 'react-native';
 import { useTheme } from "../../theme/ThemeProvider";
+import InnerContainer from "../../features/system/containers/InnerContainer";
 
 const CognitiveHeader = ({ heading, description }) => {
   const { theme } = useTheme();
 
   return (
-    <View style={styles.headerContainer}>
-      <Text style={[styles.heading, { color: theme.text.primary }]}>
-        {heading}
-      </Text>
-
-      <Text style={[styles.description, { color: theme.text.secondary }]}>
-        {description}
-      </Text>
-    </View>
+    <InnerContainer 
+      title={null} // Don't use InnerContainer's default title
+      style={styles.headerContainer}
+    >
+      <View style={styles.headerContent}>
+        {/* Use your own heading with theme colors */}
+        <Text style={theme.ui.title}>
+          {heading}
+        </Text>
+        
+        <Text style={styles.description}>
+          {description}
+        </Text>
+      </View>
+    </InnerContainer>
   );
 };
 
-export default CognitiveHeader;
-
 const styles = StyleSheet.create({
   headerContainer: {
-    alignItems: "center",
-    marginBottom: 20,
-  },
-  heading: {
-    fontSize: 26,
-    fontWeight: "800",
-    textAlign: "center",
+    width: "90%",
+    margin: "auto"
   },
   description: {
-    marginTop: 6,
-    fontSize: 14,
+    fontSize: 15,
+    fontFamily: "BLANCO",
     textAlign: "center",
     opacity: 0.8,
     maxWidth: 300,
+    color: "rgba(255, 215, 0, 0.5)"
   },
 });
+
+export default CognitiveHeader;

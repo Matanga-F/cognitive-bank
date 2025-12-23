@@ -4,10 +4,11 @@ import React from 'react';
 
 // Import screens/components
 import Welcome from '../screens/Onboarding/Welcome';
-import CognitiveAuthentication from '../components/forms/CognitiveAuthentication';
-import CognitiveTransactionDemo from '../scripts/CognitiveTransactionDemo'
-import CognitiveDashboard from '../components/dashboard/CognitiveDashboard';
+import CognitiveLogin from "../screens/Auth/CognitiveLogin"
+import CognitiveRegister from '../screens/Auth/CognitiveRegister';
+import CognitiveDashboard from "../screens/Main/CognitiveDashboard"
 import { Alert } from 'react-native';
+import WelcomeScreen from '../screens/Onboarding/Welcome';
 
 const Stack = createNativeStackNavigator();
 
@@ -32,70 +33,42 @@ const AppNavigator = () => {
   return (
     <NavigationContainer>
       <Stack.Navigator
-        initialRouteName="Dashboard" // Change this to test different screens
         screenOptions={{
           headerShown: true,
           headerStyle: {
-            backgroundColor: '#581C87',
+            backgroundColor: '#8c2505ff',
           },
-          headerTintColor: '#fff',
+          headerTintColor: '#f3e2e2ff',
           headerTitleStyle: {
             fontWeight: 'bold',
           },
         }}
       >
         {/* Welcome/Onboarding Screen */}
-        <Stack.Screen
+        {/* <Stack.Screen
           name="Welcome"
-          component={Welcome}
+          component={WelcomeScreen}
+          options={{
+            headerShown: false,
+            animation: 'fade',
+          }}
+        /> */}
+        {/* <Stack.Screen
+          name="CognitiveLogin"
+          component={CognitiveLogin}
+          options={{
+            headerShown: false,
+            animation: 'fade',
+          }}
+        /> */}
+        <Stack.Screen
+          name="CognitiverRegister"
+          component={CognitiveRegister}
           options={{
             headerShown: false,
             animation: 'fade',
           }}
         />
-
-        {/* Authentication Screen */}
-        <Stack.Screen
-          name="Authentication"
-          component={CognitiveAuthentication}
-          options={{
-            title: 'Login / Register',
-            animation: 'slide_from_right',
-          }}
-        />
-
-        {/* Transaction Component Demo Screen */}
-        <Stack.Screen
-          name="TransactionDemo"
-          component={CognitiveTransactionDemo}
-          options={{
-            title: 'Transaction Examples',
-            animation: 'slide_from_right',
-          }}
-        />
-
-        {/* Dashboard Screen */}
-        <Stack.Screen
-          name="Dashboard"
-          options={{
-            title: 'Cognitive Dashboard',
-            headerShown: true,
-            animation: 'fade',
-          }}
-        >
-          {(props) => (
-            <CognitiveDashboard
-              {...props}
-              onTransactionPress={handleTransactionPress}
-              onViewAllTransactions={handleViewAllTransactions}
-              onViewAllAccounts={handleViewAllAccounts}
-              onQuickAction={handleQuickAction}
-              userName="John Doe"
-              showNeuralInsights={true}
-              showSpendingCategories={true}
-            />
-          )}
-        </Stack.Screen>
       </Stack.Navigator>
     </NavigationContainer>
   );

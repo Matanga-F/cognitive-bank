@@ -11,7 +11,9 @@ import {
 import { useEffect, useRef } from "react";
 import { useTheme, ThemeProvider } from "./theme/ThemeProvider";
 import { SafeAreaProvider, SafeAreaView } from "react-native-safe-area-context";
-import AppNavigator from "./navigation/AppNavigator"
+import AppNavigator from "./navigation/AppNavigator";
+import ContextProvider from "./contexts/ContextProvider"; // Import your combined context provider
+
 const MainApp = () => {
   const { theme, mode, toggleTheme } = useTheme();
 
@@ -37,13 +39,15 @@ const MainApp = () => {
           ]}
         >
           {Platform.OS === "web" ? (
-            <View>
+            <AppNavigator />
+          ) : (
+            <View style={{ flex: 1 }}>
               <AppNavigator />
-              </View>
-                ) : (
-                  <Text style={theme.text.secondary}>Running on Mobile</Text>
-                )}
-         
+              <Text style={[theme.text.secondary, styles.mobileText]}>
+                Running on Mobile
+              </Text>
+            </View>
+          )}
         </Animated.View>
       </SafeAreaView>
     </SafeAreaProvider>
@@ -52,15 +56,22 @@ const MainApp = () => {
 
 export default function App() {
   return (
-    <ThemeProvider>
-      <MainApp />
-    </ThemeProvider>
+    <ContextProvider> {/* Wrap with your combined context provider first */}
+      <ThemeProvider>
+        <MainApp />
+      </ThemeProvider>
+    </ContextProvider>
   );
 }
 
 const styles = StyleSheet.create({
   container: {
     flex: 1,
-    
   },
+  mobileText: {
+    textAlign: 'center',
+    padding: 10,
+    fontSize: 12,
+    opacity: 0.7
+  }
 });

@@ -1,17 +1,29 @@
+// contexts/ContextProvider.jsx
 import React from "react";
+import { AppProvider } from "./AppContext";
 import { AuthProvider } from "./AuthContext";
-import { DomainProvider } from "./DomainContext";
-import { SystemProvider } from "./SystemContext";
-
+import {AccountProvider} from "./AccountContext"
+import {CardsProvider} from "./CardsContext"
+import {LoanProvider} from "./LoanContext"
+import {TransactionsProvider} from "./TransactionsContext"
+import {LinkageProvider} from "./LinkageContext"
 const ContextProvider = ({ children }) => {
   return (
-    <AuthProvider>
-      <DomainProvider>
-        <SystemProvider>
-          {children}
-        </SystemProvider>
-      </DomainProvider>
-    </AuthProvider>
+    <AppProvider>
+      <AuthProvider>
+        <AccountProvider>
+          <CardsProvider>
+            <TransactionsProvider>
+            <LoanProvider>
+              <LinkageProvider>
+                {children}
+              </LinkageProvider>
+              </LoanProvider>
+            </TransactionsProvider>
+          </CardsProvider>
+        </AccountProvider>
+      </AuthProvider>
+    </AppProvider>
   );
 };
 

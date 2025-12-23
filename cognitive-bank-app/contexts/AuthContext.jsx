@@ -3,32 +3,29 @@ import React, { createContext, useState } from "react";
 export const AuthContext = createContext(null);
 
 export const AuthProvider = ({ children }) => {
-  const [token, setToken] = useState(null);
+  //Core identity
+  const [firstName, setFirstName] = useState(null);
+  const [lastName, setLastName] = useState(null);
   const [email, setEmail] = useState(null);
-  const [password, setPassword] = useState(null)
-  const [permissions, setPermissions] = useState([]);
+  const [password, setPassword] = useState(null);
+  const [phoneNumber, setPhoneNumber] = useState(null);
 
-  const [isLoading, setIsLoading] = useState(false);
-  const [authError, setAuthError] = useState(null);
-  const [expiresIn, setExpiresIn] = useState(null);
-  const [authProvider, setAuthProvider] = useState(null); 
-  const [userContext, setUserContext] = useState(null);
+  //Banking-specific
+  const [role, setRole] = useState(null);       // CUSTOMER, ADMIN, AUDITOR, etc.
+  const [status, setStatus] = useState(null);   // ACTIVE, INACTIVE, SUSPENDED
 
-  const isAuthenticated = !!token;
+  const [updatedAt, setUpdatedAt] = useState(null);
 
   return (
     <AuthContext.Provider
       value={{
-        token, setToken,
+        firstName, setFirstName,
+        lastName, setLastName,
         email, setEmail,
-        orgId, setOrgId,
-        permissions, setPermissions,
-        isLoading, setIsLoading,
-        authError, setAuthError,
-        expiresIn, setExpiresIn,
-        authProvider, setAuthProvider,
-        userContext, setUserContext,
-        isAuthenticated
+        password, setPassword,
+        phoneNumber, setPhoneNumber,
+        role, setRole,
+        status, setStatus
       }}
     >
       {children}

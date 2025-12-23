@@ -6,26 +6,26 @@ export const darkTheme = {
   
   // Brand Identity
   brand: {
-    primary: 'rgba(88, 28, 135, 1)',
-    secondary: 'rgba(59, 7, 100, 1)',
-    tertiary: 'rgba(147, 51, 234, 1)',
-    neural: 'rgba(232, 121, 249, 1)',
-    accent: 'rgba(37, 99, 235, 1)',
+    primary: 'rgba(255, 102, 0, 1)',      // Vibrant Orange
+    secondary: 'rgba(204, 85, 0, 1)',     // Deep Orange
+    tertiary: 'rgba(255, 153, 51, 1)',    // Lighter Orange
+    neural: 'rgba(255, 179, 71, 1)',      // Warm Orange
+    accent: 'rgba(255, 204, 102, 1)',     // Soft Accent Orange
   },
 
   // Background Colors
   background: {
-    primary: 'rgba(17, 24, 39, 1)',
-    secondary: 'rgba(31, 41, 55, 1)',
-    tertiary: 'rgba(55, 65, 81, 1)',
-    card: 'rgba(88, 28, 135, 0.25)',
-    cardElevated: 'rgba(88, 28, 135, 0.4)',
-    overlay: 'rgba(17, 24, 39, 0.85)',
-    modal: 'rgba(31, 41, 55, 0.95)',
-    sidebar: 'rgba(15, 23, 42, 1)',
-    header: 'rgba(88, 28, 135, 0.9)',
-    gradientStart: 'rgba(17, 24, 39, 1)',
-    gradientEnd: 'rgba(88, 28, 135, 0.8)',
+    primary: 'rgba(0, 0, 0, 1)',          // Pure Black
+    secondary: 'rgba(18, 18, 18, 1)',     // Dark Gray Black
+    tertiary: 'rgba(34, 34, 34, 1)',      // Slightly lighter black
+    card: 'rgba(255, 102, 0, 0.25)',      // Orange tint
+    cardElevated: 'rgba(255, 102, 0, 0.4)',
+    overlay: 'rgba(0, 0, 0, 0.85)',
+    modal: 'rgba(18, 18, 18, 0.95)',
+    sidebar: 'rgba(10, 10, 10, 1)',
+    header: 'rgba(255, 102, 0, 0.9)',
+    gradientStart: 'rgba(0, 0, 0, 1)',
+    gradientEnd: 'rgba(255, 102, 0, 0.8)',
   },
   contentWrapper: {
     alignItems: "center",
@@ -39,8 +39,8 @@ export const darkTheme = {
     primary: 'rgba(255, 255, 255, 0.95)',
     secondary: 'rgba(243, 244, 246, 0.85)',
     tertiary: 'rgba(209, 213, 219, 0.7)',
-    accent: 'rgba(232, 121, 249, 1)',
-    inverse: 'rgba(17, 24, 39, 0.95)',
+    accent: 'rgba(255, 153, 51, 1)',
+    inverse: 'rgba(0, 0, 0, 0.95)',
     placeholder: 'rgba(156, 163, 175, 0.5)',
     disabled: 'rgba(156, 163, 175, 0.4)',
     heading: 'rgba(255, 255, 255, 0.98)',
@@ -50,25 +50,25 @@ export const darkTheme = {
   // Interactive Elements
   interactive: {
     primary: {
-      background: 'rgba(168, 85, 247, 1)',
+      background: 'rgba(255, 102, 0, 1)',
       text: 'rgba(255, 255, 255, 0.95)',
-      hover: 'rgba(147, 51, 234, 1)',
-      active: 'rgba(126, 34, 206, 1)',
+      hover: 'rgba(204, 85, 0, 1)',
+      active: 'rgba(153, 61, 0, 1)',
     },
     secondary: {
-      background: 'rgba(236, 72, 153, 1)',
-      text: 'rgba(255, 255, 255, 0.95)',
-      hover: 'rgba(219, 39, 119, 1)',
-      active: 'rgba(190, 24, 93, 1)',
+      background: 'rgba(255, 153, 51, 1)',
+      text: 'rgba(0, 0, 0, 0.95)',
+      hover: 'rgba(255, 128, 0, 1)',
+      active: 'rgba(204, 85, 0, 1)',
     },
   },
 
   // Status Colors
   status: {
     success: 'rgba(34, 197, 94, 1)',
-    warning: 'rgba(251, 146, 60, 1)',
+    warning: 'rgba(255, 153, 51, 1)',
     error: 'rgba(239, 68, 68, 1)',
-    info: 'rgba(59, 130, 246, 1)',
+    info: 'rgba(255, 179, 71, 1)',
   },
 
   // Financial Colors
@@ -80,100 +80,104 @@ export const darkTheme = {
 
   // Neural Elements
   neural: {
-    primary: 'rgba(232, 121, 249, 1)',
-    secondary: 'rgba(168, 85, 247, 1)',
-    glow: 'rgba(232, 121, 249, 0.3)',
+    primary: 'rgba(255, 153, 51, 1)',
+    secondary: 'rgba(255, 179, 71, 1)',
+    glow: 'rgba(255, 102, 0, 0.3)',
   },
 
   // Charts
   charts: {
-    line: 'rgba(232, 121, 249, 1)',
-    area: 'rgba(232, 121, 249, 0.2)',
-    bar1: 'rgba(168, 85, 247, 1)',
-    bar2: 'rgba(147, 51, 234, 1)',
-    bar3: 'rgba(126, 34, 206, 1)',
+    line: 'rgba(255, 153, 51, 1)',
+    area: 'rgba(255, 153, 51, 0.2)',
+    bar1: 'rgba(255, 102, 0, 1)',
+    bar2: 'rgba(204, 85, 0, 1)',
+    bar3: 'rgba(153, 61, 0, 1)',
   },
 
   // Gradients
   gradients: {
-    primary: ['#581C87', '#3B0764', '#1F2937'],
-    accent: ['#E879F9', '#EC4899', '#D946EF'],
-    neural: ['#D946EF', '#9333EA', '#3B82F6'],
+    primary: ['#FF6600', '#CC5500', '#000000'],
+    accent: ['#FF9933', '#FFB347', '#FFCC66'],
+    neural: ['#FF6600', '#FF9933', '#FFCC66'],
   },
 
   // UI Elements
   ui: {
     border: {
-      primary: 'rgba(147, 51, 234, 0.3)',
-      secondary: 'rgba(168, 85, 247, 0.2)',
-      accent: 'rgba(232, 121, 249, 0.4)',
-      focus: 'rgba(232, 121, 249, 0.7)',
+      primary: 'rgba(255, 102, 0, 0.3)',
+      secondary: 'rgba(255, 153, 51, 0.2)',
+      accent: 'rgba(255, 179, 71, 0.4)',
+      focus: 'rgba(255, 153, 51, 0.7)',
     },
-    divider: 'rgba(147, 51, 234, 0.15)',
+    divider: 'rgba(255, 102, 0, 0.15)',
     shadow: {
-      light: 'rgba(147, 51, 234, 0.2)',
-      medium: 'rgba(147, 51, 234, 0.3)',
-      heavy: 'rgba(147, 51, 234, 0.4)',
+      light: 'rgba(255, 102, 0, 0.2)',
+      medium: 'rgba(255, 102, 0, 0.3)',
+      heavy: 'rgba(255, 102, 0, 0.4)',
     },
 
     //Un-ordered Styles::
     logoCircle: {
-    width: 120,
-    height: 120,
-    borderRadius: 60,
-    justifyContent: "center",
-    alignItems: "center",
+      width: 120,
+      height: 120,
+      borderRadius: 60,
+      justifyContent: "center",
+      alignItems: "center",
 
-    ...(Platform.OS === "web"
-      ? { boxShadow: "0px 8px 18px rgba(0,0,0,0.25)" }
-      : {
-          shadowColor: "#000",
-          shadowOpacity: 0.3,
-          shadowRadius: 10,
-          elevation: 8,
-        }),
-  },
+      ...(Platform.OS === "web"
+        ? { boxShadow: "0px 8px 18px rgba(0,0,0,0.25)" }
+        : {
+            shadowColor: "#000",
+            shadowOpacity: 0.3,
+            shadowRadius: 10,
+            elevation: 8,
+          }),
+    },
 
-  logoText: {
-    fontSize: 44,
-    fontWeight: "900",
-    color: "#fff",
-    letterSpacing: 1,
-  },
+    logoText: {
+      fontSize: 44,
+      fontWeight: "900",
+      color: "#FF6600",
+      letterSpacing: 1,
+    },
 
-  title: {
-    marginTop: 28,
-    fontSize: 30,
-    fontWeight: "800",
-    letterSpacing: 0.5,
-  },
+    title: {
+      marginTop: 28,
+      fontSize: 30,
+      fontWeight: "800",
+      letterSpacing: 0.5,
+      color: "#FF9933",
+    },
 
-  subtitle: {
-    marginTop: 10,
-    fontSize: 15,
-    opacity: 0.85,
-    textAlign: "center",
-    maxWidth: 260,
-    lineHeight: 20,
-  },
+    subtitle: {
+      marginTop: 10,
+      fontSize: 15,
+      opacity: 0.85,
+      textAlign: "center",
+      maxWidth: 260,
+      lineHeight: 20,
+      color: "#FFB347",
+    },
 
-  footer: {
-    position: "absolute",
-    bottom: 26,
-    width: "100%",
-    alignItems: "center",
-  },
+    footer: {
+      position: "absolute",
+      bottom: 26,
+      width: "100%",
+      alignItems: "center",
+    },
 
-  footerText: {
-    fontSize: 12,
-    opacity: 0.75,
-    letterSpacing: 0.3,
-  },
+    footerText: {
+      fontSize: 12,
+      opacity: 0.75,
+      letterSpacing: 0.3,
+      color: "#FF9933",
+    },
 
-  version: {
-    fontSize: 11,
-    marginTop: 4,
-    opacity: 0.55,
-  },
+    version: {
+      fontSize: 11,
+      marginTop: 4,
+      opacity: 0.55,
+      color: "#FF6600",
+    },
   },
 };
