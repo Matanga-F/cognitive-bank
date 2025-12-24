@@ -45,14 +45,14 @@ const AppNavigator = () => {
         }}
       >
         {/* Welcome/Onboarding Screen */}
-        {/* <Stack.Screen
+        <Stack.Screen
           name="Welcome"
           component={WelcomeScreen}
           options={{
             headerShown: false,
             animation: 'fade',
           }}
-        /> */}
+        />
         {/* <Stack.Screen
           name="CognitiveLogin"
           component={CognitiveLogin}
@@ -61,14 +61,14 @@ const AppNavigator = () => {
             animation: 'fade',
           }}
         /> */}
-        <Stack.Screen
+        {/* <Stack.Screen
           name="CognitiverRegister"
           component={CognitiveRegister}
           options={{
             headerShown: false,
             animation: 'fade',
           }}
-        />
+        /> */}
       </Stack.Navigator>
     </NavigationContainer>
   );
