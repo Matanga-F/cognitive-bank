@@ -1,45 +1,48 @@
-import {
-  StyleSheet,
-  Text,
-  View
-} from 'react-native';
-import { useTheme } from "../../theme/ThemeProvider";
-import InnerContainer from "../../features/system/containers/InnerContainer";
+// components/common/CognitiveHeader.jsx
+import React from 'react';
+import { StyleSheet, Text, View } from 'react-native';
+import { useTheme } from '../../theme/ThemeProvider';
+import InnerContainer from '../../features/system/containers/InnerContainer';
 
 const CognitiveHeader = ({ heading, description }) => {
   const { theme } = useTheme();
 
   return (
-    <InnerContainer 
-      title={null} // Don't use InnerContainer's default title
-      style={styles.headerContainer}
-    >
-      <View style={styles.headerContent}>
-        {/* Use your own heading with theme colors */}
-        <Text style={theme.ui.title}>
-          {heading}
-        </Text>
+    <InnerContainer style={styles.container}>
+      <View style={styles.content}>
+        {heading && (
+          <Text style={[theme.ui.title, styles.heading]}>{heading}</Text>
+        )}
         
-        <Text style={styles.description}>
-          {description}
-        </Text>
+        {description && (
+          <Text style={styles.description}>{description}</Text>
+        )}
       </View>
     </InnerContainer>
   );
 };
 
 const styles = StyleSheet.create({
-  headerContainer: {
-    width: "90%",
-    margin: "auto"
+  container: {
+    width: '100%',        // Better to let InnerContainer handle padding/margins
+    alignItems: 'center', // Centers content horizontally
+  },
+  content: {
+    alignItems: 'center',
+    width: '100%',
+    maxWidth: 340,        // Reasonable max width for readability on larger screens
+  },
+  heading: {
+    textAlign: 'center',
+    marginBottom: 12,
   },
   description: {
     fontSize: 15,
-    fontFamily: "BLANCO",
-    textAlign: "center",
-    opacity: 0.8,
-    maxWidth: 300,
-    color: "rgba(255, 215, 0, 0.5)"
+    fontFamily: 'BLANCO', // Make sure this font is properly loaded in your project
+    textAlign: 'center',
+    color: 'rgba(255, 215, 0, 0.6)', // Slightly increased opacity for better readability
+    lineHeight: 22,
+    opacity: 0.9,
   },
 });
 

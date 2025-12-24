@@ -10,7 +10,7 @@ import {
 import { useTheme } from "../../theme/ThemeProvider";
 import MainContainer from "../../features/system/containers/MainContainer";
 import CognitiveFooter from "../../components/Card/CognitiveFooter";
-
+import CognitiveHeader from "../../components/Card/CognitiveHeader";
 export default function WelcomeScreen({ navigation }) {
   const { theme } = useTheme();
 

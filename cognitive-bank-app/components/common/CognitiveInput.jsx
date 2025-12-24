@@ -21,7 +21,6 @@ const CognitiveInput = ({
   autoCapitalize = 'none',
   error = '',
   helperText = '',
-  required = false,
   style = {},
   onBlur,
   onFocus,
@@ -50,12 +49,9 @@ const CognitiveInput = ({
     <View style={[styles.wrapper, style]}>
       {/* Label */}
       {label ? (
-        <View style={styles.labelRow}>
-          <Text style={[styles.label, hasError && styles.errorText]}>
-            {label}
-          </Text>
-          {required && <Text style={styles.required}>*</Text>}
-        </View>
+        <Text style={[styles.label, hasError && styles.errorText]}>
+          {label}
+        </Text>
       ) : null}
 
       {/* Input Container */}
@@ -121,20 +117,11 @@ const styles = StyleSheet.create({
   wrapper: {
     marginBottom: 20,
   },
-  labelRow: {
-    flexDirection: 'row',
-    alignItems: 'center',
-    marginBottom: 8,
-  },
   label: {
     fontSize: 14,
     fontWeight: '600',
     color: '#FFFFFF',
-  },
-  required: {
-    color: '#FF3B30',
-    marginLeft: 4,
-    fontSize: 16,
+    marginBottom: 8,
   },
   container: {
     flexDirection: 'row',

@@ -15,6 +15,8 @@ import { useTheme } from "../../theme/ThemeProvider";
 import MainContainer from "../../features/system/containers/MainContainer";
 import CognitiveInput from "../../components/common/CognitiveInput";
 import CognitiveButton from "../../components/common/CognitiveButton";
+import CognitiveHeader from "../../components/Card/CognitiveHeader";
+import CognitiveSubHeading from "../../components/common/CognitiveSubHeading"
 import { Ionicons } from "@expo/vector-icons";
 import { LinearGradient } from "expo-linear-gradient";
 import { AppContext } from "../../contexts/AppContext";
@@ -196,12 +198,10 @@ export default function CognitiveRegister({ navigation }) {
             >
               {/* Header */}
               <View style={styles.headerContainer}>
-                <Text style={[styles.headerTitle, theme.ui?.title || {}]}>
-                  Create Account
-                </Text>
-                <Text style={[styles.headerSubtitle, { color: theme.text?.secondary }]}>
-                  Join Cognitive Bank for intelligent banking
-                </Text>
+                <CognitiveHeader
+                  heading="Create Account"
+                />
+                <CognitiveSubHeading  text="Join Cognitive Bank for intelligent banking"/>
               </View>
 
               {/* Progress Indicator */}
