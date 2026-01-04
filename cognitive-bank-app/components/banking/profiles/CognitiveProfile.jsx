@@ -9,7 +9,7 @@ import {
   Animated,
   Image,
 } from "react-native";
-import { useTheme } from "../../theme/ThemeProvider";
+import { useTheme } from "../../../theme/ThemeProvider";
 import MainContainer from "../../../features/system/containers/MainContainer";
 import CognitiveFooter from "../../../components/Card/CognitiveFooter";
 import { Ionicons } from "@expo/vector-icons";

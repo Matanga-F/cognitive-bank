@@ -6,28 +6,12 @@ import React from 'react';
 import Welcome from '../screens/Onboarding/Welcome';
 import CognitiveLogin from "../screens/Auth/CognitiveLogin"
 import CognitiveRegister from '../screens/Auth/CognitiveRegister';
+import CognitiveProfile from "../components/banking/profiles/CognitiveProfile"
 import CognitiveDashboard from "../screens/Main/CognitiveDashboard"
 import { Alert } from 'react-native';
 import WelcomeScreen from '../screens/Onboarding/Welcome';
 
 const Stack = createNativeStackNavigator();
-
-// Event handlers for dashboard
-const handleTransactionPress = (transactionId) => {
-  Alert.alert('Transaction Pressed', `ID: ${transactionId}`);
-};
-
-const handleViewAllTransactions = () => {
-  Alert.alert('View All', 'Show all transactions');
-};
-
-const handleViewAllAccounts = () => {
-  Alert.alert('Accounts', 'Manage accounts');
-};
-
-const handleQuickAction = (action) => {
-  Alert.alert('Quick Action', `Action: ${action}`);
-};
 
 const AppNavigator = () => {
   return (
@@ -45,14 +29,14 @@ const AppNavigator = () => {
         }}
       >
         {/* Welcome/Onboarding Screen */}
-        <Stack.Screen
+        {/* <Stack.Screen
           name="Welcome"
           component={WelcomeScreen}
           options={{
             headerShown: false,
             animation: 'fade',
           }}
-        />
+        /> */}
         {/* <Stack.Screen
           name="CognitiveLogin"
           component={CognitiveLogin}
@@ -62,13 +46,32 @@ const AppNavigator = () => {
           }}
         /> */}
         {/* <Stack.Screen
-          name="CognitiverRegister"
+          name="CognitiveRegister"
           component={CognitiveRegister}
           options={{
             headerShown: false,
             animation: 'fade',
           }}
         /> */}
+         <Stack.Screen
+          name="CognitiveProfile"
+          component={CognitiveProfile}
+          options={{
+            headerShown: false,
+            animation: 'fade',
+          }}
+        />
+
+        <Stack.Screen
+          name="CognitiveDashboard"
+          component={CognitiveDashboard}
+          options={{
+            headerShown: false,
+            animation: 'fade',
+          }}
+        />
+
+
       </Stack.Navigator>
     </NavigationContainer>
   );
