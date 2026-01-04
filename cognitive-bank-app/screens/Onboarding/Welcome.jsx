@@ -78,16 +78,6 @@ export default function WelcomeScreen({ navigation }) {
           Intelligent Banking • Secure Future
         </Text>
       </Animated.View>
-      <CognitiveNavList
-        horizontal
-        showSeparators={false}
-        data={[
-          { title: 'Send Money', icon: 'arrow-up-outline', onPress: () => {} },
-          { title: 'Request', icon: 'arrow-down-outline', onPress: () => {} },
-          { title: 'Top Up', icon: 'add-circle-outline', onPress: () => {} },
-          { title: 'Bills', icon: 'receipt-outline', onPress: () => {} },
-        ]}
-      />
 
       {/* Footer - Elegantly positioned at bottom */}
       <View style={styles.footerWrapper}>
